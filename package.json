@@ -1,0 +1,10 @@
+{
+  "name": "Friend Finder",
+  "version": "1.0.0",
+  "description": "My First Discord Bot",
+  "main": "friendfinder.js",
+  "author": "Conner Copeland",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
