@@ -1,3 +1,3 @@
-cd C:\Users\pongo\Dropbox\Website\FriendFinder
+cd C:\Users\pongo\OneDrive\Documents\GitHub\FriendFinder
 node friendfinder.js
 cmd /k
