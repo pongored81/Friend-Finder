@@ -1,11 +1,9 @@
-/**
- * A ping pong bot, whenever you send "ping", it replies "pong".
- */
-
-// Import the discord.js module
+// Import Nodes
 const Discord = require('discord.js');
+const fs = require("fs");
+//const enmap = require("enmap");
 
-// Import randomCat module
+// Import ff-nodes
 const randomCat = require("./ff-nodes/randomCat.js");
 
 // Import config file
@@ -17,9 +15,7 @@ const prefix = config.prefix;
 const client = new Discord.Client();
 
 
-/* The ready event is vital, it means that only after
-this will your bot start reacting to information
- received from Discord */
+// ready event for bot start
 client.on('ready', () => {
   console.log('I am ready!');
 });
@@ -98,18 +94,18 @@ client.on('message', message => {
         }
         break;
 
-/*        //Queue
-      case 'queue':
-        let game =
-*/
+        /*        //Queue
+              case 'queue':
+                let game =
+        */
 
-          default:
+      default:
     }
   // Owner commands
   if (message.author.id != config.ownerID) return;
   else switch (message.content) {
     case prefix + 'test':
-      console.log(randomCat());
+      console.log(randomCat.img());
       break;
   }
 });
