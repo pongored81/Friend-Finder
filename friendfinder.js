@@ -100,12 +100,13 @@ client.on('message', message => {
         */
 
       default:
+      message.channel.send("Commands can be found at https://sqksq.theplayground123.net/FriendFinder ")
     }
   // Owner commands
   if (message.author.id != config.ownerID) return;
   else switch (message.content) {
     case prefix + 'test':
-      console.log(randomCat());
+      console.log(randomCat.img());
       break;
   }
 });
