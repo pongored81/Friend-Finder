@@ -105,7 +105,7 @@ client.on('message', message => {
   if (message.author.id != config.ownerID) return;
   else switch (message.content) {
     case prefix + 'test':
-      console.log(randomCat.img());
+      console.log(randomCat());
       break;
   }
 });
