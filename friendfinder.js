@@ -4,7 +4,7 @@ const fs = require("fs");
 //const enmap = require("enmap");
 
 // Import ff-nodes
-const randomCat = require("./ff-nodes/randomCat.js");
+const randomCat = require("./ffnodes/randomCat.js");
 
 // Import config file
 const config = require("./config.json");
@@ -79,6 +79,7 @@ client.on('message', message => {
         message.channel.send('....:lizard:')
         break;
 
+
         // tools
       case 'roll':
         let min = args[0];
@@ -100,7 +101,7 @@ client.on('message', message => {
         */
 
       default:
-      message.channel.send("Commands can be found at https://sqksq.theplayground123.net/FriendFinder ")
+        message.channel.send("Commands can be found at https://sqksq.theplayground123.net/FriendFinder ")
     }
   // Owner commands
   if (message.author.id != config.ownerID) return;
@@ -108,6 +109,7 @@ client.on('message', message => {
     case prefix + 'test':
       console.log(randomCat.img());
       break;
+
   }
 });
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
