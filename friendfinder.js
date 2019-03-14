@@ -112,10 +112,7 @@ client.on('message', message => {
     cat();
     console.log('testing....')
       break;
-    case 'off':
-      console.log('Resetting...')
-      client.destroy();
-      break;
+
 
   }
 });
