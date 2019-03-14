@@ -1,8 +1,16 @@
-//randomcat.js
-const fetch = require('node-fetch');
+const got = URL => require("got")(URL, {json:true});
 
-exports.img = async function cat(){
-  var data = await fetch('http://aws.random.cat/meow');
-  var json = await data.json();
-  return json.file;
-}
+var img = 0;
+
+async function cat(){
+  const res = await got('http://aws.random.cat/meow');
+  const file = res.body.file;
+  callback(file);
+};
+
+function callback(response){
+  var img = response;
+};
+
+cat();
+console.log(img);

@@ -1,10 +1,10 @@
 // Import Nodes
 const Discord = require('discord.js');
 const fs = require("fs");
+const got = URL => require("got")(URL, {json:true});
 //const enmap = require("enmap");
 
 // Import ff-nodes
-const randomCat = require("./ffnodes/randomCat.js");
 
 // Import config file
 const config = require("./config.json");
@@ -101,13 +101,20 @@ client.on('message', message => {
         */
 
       default:
-        message.channel.send("Commands can be found at https://sqksq.theplayground123.net/FriendFinder ")
+      message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
     }
+
+
   // Owner commands
   if (message.author.id != config.ownerID) return;
-  else switch (message.content) {
-    case prefix + 'test':
-      console.log(randomCat.img());
+  else switch (command) {
+    case 'test':
+    cat();
+    console.log('testing....')
+      break;
+    case 'off':
+      console.log('Resetting...')
+      client.destroy();
       break;
 
   }
@@ -117,4 +124,10 @@ client.login(config.token);
 
 
 //error handling
-client.on('error', console.error);
+//client.on('error', console.error);
+
+async function cat(message){
+  const res = await got('http://aws.random.cat/meow');
+  const file = res.body.file;
+  console.log(file);
+};
