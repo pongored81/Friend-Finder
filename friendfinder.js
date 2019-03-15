@@ -145,27 +145,39 @@ client.on('message', message => {
         break;
 
         //Queue
-              case 'queue':
-                var action = args[0];
-                var game = args[1];
-                switch (action){
-                  case 'show':
-                    fs.readFile('./queue/' + game + '.json',(err,data) => {
-                      if (err) throw err;
-                      var x = JSON.parse(data)
-                      console.log(x.status[0][0]);
-                    });
-                }
+      case 'queue':
+        var action = args[0];
+        var game = args[1];
+        switch (action)
+        {
+          case 'show':
+            fs.readFile('./queue/' + game + '.json', (err, data) =>
+            {
+              if (err) throw err;
+              var json = JSON.parse(data);
+              const embed = new RichEmbed()
+                .setTitle('League of Legends')
+                .setColor(0x00a8f3)
+                .addField('In Queue', json.inQueue)
+              message.channel.send(embed);
+            });
+          break;
+          case 'show':
+            //  case 'add':
+        }
+        break;
 
 
-      default:
-        message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
-    }
 
 
-  // Owner commands
-  //if (message.author.id != config.ownerID) return;
-  //else switch (command) {}
+  default:
+  message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
+}
+
+
+// Owner commands
+//if (message.author.id != config.ownerID) return;
+//else switch (command) {}
 
 
 
