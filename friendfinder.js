@@ -1,10 +1,11 @@
 // Import Nodes
 const Discord = require('discord.js');
 const fs = require("fs");
+const got = require("got");
+
 //const enmap = require("enmap");
 
 // Import ff-nodes
-const randomCat = require("./ffnodes/randomCat.js");
 
 // Import config file
 const config = require("./config.json");
@@ -107,7 +108,10 @@ client.on('message', message => {
   if (message.author.id != config.ownerID) return;
   else switch (message.content) {
     case prefix + 'test':
-      console.log(randomCat.img());
+(async () => {
+  const res = await got("http://aws.random.cat/meow",{json: true});
+  message.channel.send(res.body.file)
+})();
       break;
 
   }
