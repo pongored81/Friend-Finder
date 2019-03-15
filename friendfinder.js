@@ -1,13 +1,7 @@
 // Import Nodes
-const Discord = require('discord.js');
+const {Client, RichEmbed} = require('discord.js');
 const fs = require("fs");
-<<<<<<< HEAD
-const got = URL => require("got")(URL, {json:true});
-=======
 const got = require("got");
-
->>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161
-//const enmap = require("enmap");
 
 // Import ff-nodes
 
@@ -17,7 +11,7 @@ const prefix = config.prefix;
 
 
 // Create an instance of a Discord client
-const client = new Discord.Client();
+const client = new Client();
 
 
 // ready event for bot start
@@ -69,6 +63,30 @@ client.on('message', message => {
           }
         }
         break;
+        case 'random':
+        if (args[0] == 'cat'){
+          (async () => {
+            const res = await got("http://aws.random.cat/meow", {json: true});
+            const file = res.body.file;
+            const embed = new RichEmbed()
+            .setTitle('Kitty Time')
+            .setColor(0x00a8f3)
+            .setImage(file)
+            message.channel.send(embed);
+          })();} else if (args[0] == 'dog'){
+            (async () => {
+              const res = await got("https://random.dog/woof.json", {json: true});
+              const file = res.body.url;
+              const embed = new RichEmbed()
+              .setTitle('Puppy Time')
+              .setColor(0x00a8f3)
+              .setImage(file)
+              message.channel.send(embed);
+          })();} else {
+            message.channel.send('You must select either dog or cat as the first argument');
+          }
+
+          break;
 
         // Animals
       case 'cat':
@@ -103,46 +121,23 @@ client.on('message', message => {
         /*        //Queue
               case 'queue':
                 let game =
-        */
-
-      default:
-      message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
-    }
+        */default:
+message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
+}
 
 
-  // Owner commands
-  if (message.author.id != config.ownerID) return;
-<<<<<<< HEAD
-  else switch (command) {
-    case 'test':
-    cat();
-    console.log('testing....')
-=======
-  else switch (message.content) {
-    case prefix + 'test':
-(async () => {
-  const res = await got("http://aws.random.cat/meow",{json: true});
-  message.channel.send(res.body.file)
-})();
->>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161
-      break;
+// Owner commands
+//if (message.author.id != config.ownerID) return;
+//else switch (command) {}
 
 
-  }
+
+
 });
 // Log our bot in using the token from https://discordapp.com/developers/applications/me
 client.login(config.token);
 
 
 //error handling
-<<<<<<< HEAD
-//client.on('error', console.error);
 
-async function cat(message){
-  const res = await got('http://aws.random.cat/meow');
-  const file = res.body.file;
-  console.log(file);
-};
-=======
 client.on('error', console.error);
->>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161
