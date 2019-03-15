@@ -1,5 +1,8 @@
 // Import Nodes
-const {Client, RichEmbed} = require('discord.js');
+const {
+  Client,
+  RichEmbed
+} = require('discord.js');
 const fs = require("fs");
 const got = require("got");
 
@@ -63,32 +66,56 @@ client.on('message', message => {
           }
         }
         break;
-        case 'random':
-        if (args[0] == 'cat'){
+
+        //fun commands
+        //random command
+      case 'random':
+        if (args[0] == 'cat') {
           (async () => {
-            const res = await got("http://aws.random.cat/meow", {json: true});
+            const res = await got("http://aws.random.cat/meow", {
+              json: true
+            });
             const file = res.body.file;
             const embed = new RichEmbed()
-            .setTitle('Kitty Time')
-            .setColor(0x00a8f3)
-            .setImage(file)
+              .setTitle('Kitty Time')
+              .setColor(0x00a8f3)
+              .setImage(file)
             message.channel.send(embed);
-          })();} else if (args[0] == 'dog'){
-            (async () => {
-              const res = await got("https://random.dog/woof.json", {json: true});
-              const file = res.body.url;
-              const embed = new RichEmbed()
+          })();
+        } else if (args[0] == 'dog') {
+          (async () => {
+            const res = await got("https://random.dog/woof.json", {
+              json: true
+            });
+            const file = res.body.url;
+            const embed = new RichEmbed()
               .setTitle('Puppy Time')
               .setColor(0x00a8f3)
               .setImage(file)
-              message.channel.send(embed);
-          })();} else {
-            message.channel.send('You must select either dog or cat as the first argument');
-          }
+            message.channel.send(embed);
+          })();
+        } else {
+          message.channel.send('You must select either dog or cat as the first argument');
+        }
+        break;
 
-          break;
+        //countdown command --- not in order
+      case 'countdown':
+        var nowDiscord = message.createdTimestamp + 1420070400000;
+        var nowUnix = new Date(nowDiscord);
+        var nowHour = nowUnix.getHours();
+        var nowMinutes = nowUnix.getMinutes();
+        var nowSeconds = nowUnix.getSeconds();
+        var timeNow = nowHour + ':' + nowMinutes + ':' + nowSeconds;
+        message.channel.send(timeNow);
+        var laterMonth = args[0];
+        var laterDay = args[1];
+        var laterHour = args[2];
+        break;
 
-        // Animals
+
+
+        // emoji commands
       case 'cat':
         message.channel.send('Meow!:cat:')
         break;
@@ -114,21 +141,31 @@ client.on('message', message => {
           let dif = (max - min);
           let roll = Math.floor(rnd * dif + 1 * min) + 1;
           message.channel.send(roll)
-          //          message.channel.send(roll);
         }
         break;
 
-        /*        //Queue
+        //Queue
               case 'queue':
-                let game =
-        */default:
-message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
-}
+                var action = args[0];
+                var game = args[1];
+                switch (action){
+                  case 'show':
+                    fs.readFile('./queue/' + game + '.json',(err,data) => {
+                      if (err) throw err;
+                      var x = JSON.parse(data)
+                      console.log(x.status[0][0]);
+                    });
+                }
 
 
-// Owner commands
-//if (message.author.id != config.ownerID) return;
-//else switch (command) {}
+      default:
+        message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
+    }
+
+
+  // Owner commands
+  //if (message.author.id != config.ownerID) return;
+  //else switch (command) {}
 
 
 
