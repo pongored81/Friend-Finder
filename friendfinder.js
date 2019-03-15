@@ -1,7 +1,12 @@
 // Import Nodes
 const Discord = require('discord.js');
 const fs = require("fs");
+<<<<<<< HEAD
 const got = URL => require("got")(URL, {json:true});
+=======
+const got = require("got");
+
+>>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161
 //const enmap = require("enmap");
 
 // Import ff-nodes
@@ -107,10 +112,19 @@ client.on('message', message => {
 
   // Owner commands
   if (message.author.id != config.ownerID) return;
+<<<<<<< HEAD
   else switch (command) {
     case 'test':
     cat();
     console.log('testing....')
+=======
+  else switch (message.content) {
+    case prefix + 'test':
+(async () => {
+  const res = await got("http://aws.random.cat/meow",{json: true});
+  message.channel.send(res.body.file)
+})();
+>>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161
       break;
 
 
@@ -121,6 +135,7 @@ client.login(config.token);
 
 
 //error handling
+<<<<<<< HEAD
 //client.on('error', console.error);
 
 async function cat(message){
@@ -128,3 +143,6 @@ async function cat(message){
   const file = res.body.file;
   console.log(file);
 };
+=======
+client.on('error', console.error);
+>>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161

@@ -6,6 +6,11 @@
   "author": "Conner Copeland",
   "dependencies": {
     "discord.js": "^11.4.2",
+<<<<<<< HEAD
     "got": "^9.6.0"
+=======
+    "got": "^9.6.0",
+    "node-fetch": "^2.3.0"
+>>>>>>> 0ff00495d9cf7a6b4ac6e6d430250e109810a161
   }
 }
