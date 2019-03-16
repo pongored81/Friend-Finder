@@ -66,6 +66,7 @@ client.on('message', message => {
           }
         }
         break;
+        4
 
         //fun commands
         //random command
@@ -114,7 +115,6 @@ client.on('message', message => {
         break;
 
 
-
         // emoji commands
       case 'cat':
         message.channel.send('Meow!:cat:')
@@ -140,44 +140,77 @@ client.on('message', message => {
           let rnd = Math.random();
           let dif = (max - min);
           let roll = Math.floor(rnd * dif + 1 * min) + 1;
-          message.channel.send(roll)
+          message.channel.send('**' + roll + '**')
         }
         break;
 
         //Queue
-      case 'queue':
+      case 'q':
         var action = args[0];
         var game = args[1];
-        switch (action)
-        {
+        switch (action) {
           case 'show':
-            fs.readFile('./queue/' + game + '.json', (err, data) =>
-            {
+            fs.readFile('./queue/' + game + '.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
               const embed = new RichEmbed()
                 .setTitle('League of Legends')
                 .setColor(0x00a8f3)
-                .addField('In Queue', json.inQueue)
+                .addField('In Queue', json.username)
               message.channel.send(embed);
             });
-          break;
-          case 'show':
-            //  case 'add':
+            break;
+          case 'add':
+            fs.readFile('./queue/' + game + '.json', (err, data) => {
+              if (err) throw err;
+              var json = JSON.parse(data);
+              var check = false;
+              for (i = 0; i < 5; i++) {
+                if ((json.username[i] == '-' && check == false) || json.username[i] == message.member.user.username) {
+                  json.username[i] = message.member.user.username;
+                  check = true;
+                }
+              }
+              json = JSON.stringify(json, null, 1);;
+              fs.writeFile('./queue/' + game + '.json', json, (err) => {
+                if (err) throw err;
+                message.channel.send(message.member.user.username + 'has been added to the queue');
+              });
+            });
+            break;
+          case 'clear':
+            fs.readFile('./queue/' + game + '.json', (err, data) => {
+              if (err) throw err;
+              var json = JSON.parse(data);
+              for (i = 0; i < 5; i++) {
+                json.username[i] = '-';
+                json.time[i] = '-';
+              }
+              json = JSON.stringify(json, null, 1);;
+              fs.writeFile('./queue/' + game + '.json', json, (err) => {
+                if (err) throw err;
+                console.log('The file has been reset!');
+              });
+            });
+            break;
+
+
+          case 'team':
+            break;
         }
         break;
 
 
 
 
-  default:
-  message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
-}
+      default:
+        message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
+    }
 
 
-// Owner commands
-//if (message.author.id != config.ownerID) return;
-//else switch (command) {}
+  // Owner commands
+  //if (message.author.id != config.ownerID) return;
+  //else switch (command) {}
 
 
 
