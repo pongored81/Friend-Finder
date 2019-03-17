@@ -150,7 +150,7 @@ client.on('message', message => {
         var game = args[1];
         switch (action) {
           case 'show':
-            fs.readFile('./queue/' + game + '.json', (err, data) => {
+            fs.readFile('./queue/lol.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
               const embed = new RichEmbed()
@@ -161,7 +161,7 @@ client.on('message', message => {
             });
             break;
           case 'add':
-            fs.readFile('./queue/' + game + '.json', (err, data) => {
+            fs.readFile('./queue/lol.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
               var check = false;
@@ -179,7 +179,7 @@ client.on('message', message => {
             });
             break;
           case 'clear':
-            fs.readFile('./queue/' + game + '.json', (err, data) => {
+            fs.readFile('./queue/lol.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
               for (i = 0; i < 5; i++) {
