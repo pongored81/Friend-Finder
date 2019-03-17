@@ -150,7 +150,7 @@ client.on('message', message => {
         var game = args[1];
         switch (action) {
           case 'show':
-            fs.readFile('./queue/' + game + '.json', (err, data) => {
+            fs.readFile('./queue/lol.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
               const embed = new RichEmbed()
@@ -161,7 +161,7 @@ client.on('message', message => {
             });
             break;
           case 'add':
-            fs.readFile('./queue/' + game + '.json', (err, data) => {
+            fs.readFile('./queue/lol.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
               var check = false;
@@ -174,14 +174,15 @@ client.on('message', message => {
               json = JSON.stringify(json, null, 1);;
               fs.writeFile('./queue/' + game + '.json', json, (err) => {
                 if (err) throw err;
-                message.channel.send(message.member.user.username + 'has been added to the queue');
+                message.channel.send(message.member.user.username + ' has been added to the queue');
               });
             });
             break;
           case 'clear':
-            fs.readFile('./queue/' + game + '.json', (err, data) => {
+            fs.readFile('./queue/lol.json', (err, data) => {
               if (err) throw err;
               var json = JSON.parse(data);
+              json.clear = message.createdTimestamp;
               for (i = 0; i < 5; i++) {
                 json.username[i] = '-';
                 json.time[i] = '-';
