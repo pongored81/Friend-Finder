@@ -188,7 +188,7 @@ client.on('message', message => {
                 json.time[i] = '-';
               }
               json = JSON.stringify(json, null, 1);;
-              fs.writeFile('./queue/' + game + '.json', json, (err) => {
+              fs.writeFile('./queue/lol.json', json, (err) => {
                 if (err) throw err;
                 console.log('The file has been reset!');
               });
