@@ -202,9 +202,11 @@ client.on('message', message => {
 
 
 
+      case 'help':
+        message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
+        break;
 
       default:
-        message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
     }
 
 
