@@ -172,7 +172,7 @@ client.on('message', message => {
                 }
               }
               json = JSON.stringify(json, null, 1);;
-              fs.writeFile('./queue/' + game + '.json', json, (err) => {
+              fs.writeFile('./queue/lol.json', json, (err) => {
                 if (err) throw err;
                 message.channel.send(message.member.user.username + ' has been added to the queue');
               });
