@@ -71,6 +71,7 @@ client.on('message', message => {
         //fun commands
         //random command
       case 'random':
+        message.channel.send('Getting ready....');
         if (args[0] == 'cat') {
           (async () => {
             const res = await got("http://aws.random.cat/meow", {
@@ -78,7 +79,7 @@ client.on('message', message => {
             });
             const file = res.body.file;
             const embed = new RichEmbed()
-              .setTitle('Kitty Time')
+              .setTitle('Kitty Time!')
               .setColor(0x00a8f3)
               .setImage(file)
             message.channel.send(embed);
@@ -90,7 +91,7 @@ client.on('message', message => {
             });
             const file = res.body.url;
             const embed = new RichEmbed()
-              .setTitle('Puppy Time')
+              .setTitle('Puppy Time!')
               .setColor(0x00a8f3)
               .setImage(file)
             message.channel.send(embed);
@@ -204,7 +205,7 @@ client.on('message', message => {
 
 
       case 'help':
-        message.channel.send(" Commands can be found at https://sqksq.theplayground123.net/FriendFinder ");
+        message.channel.send(" Commands can be found at https://sqksq.xyz/FriendFinder ");
         break;
 
       default:
