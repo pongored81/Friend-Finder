@@ -1,17 +1,14 @@
 {
- "username": [
-  "-",
-  "-",
-  "-",
-  "-",
-  "-"
- ],
- "time": [
-  "-",
-  "-",
-  "-",
-  "-",
-  "-"
-],
- "clear":"-"
+	"1": ["user", "time", "game"],
+	"2": ["user", "time", "game"],
+	"3": ["user", "time", "game"],
+	"4": ["user", "time", "game"],
+	"5": ["user", "time", "game"],
+	"6": ["user", "time", "game"],
+	"7": ["user", "time", "game"],
+	"8": ["user", "time", "game"],
+	"9": ["user", "time", "game"],
+	"10": ["user", "time", "game"],
+	"11": ["user", "time", "game"],
+	"12": ["user", "time", "game"]
 }
