@@ -7,6 +7,7 @@ const fs = require("fs");
 const got = require("got");
 
 // Import ff-nodes
+const stl = require("streamtools.js")
 
 // Import config file
 const config = require("./config.json");
@@ -66,7 +67,6 @@ client.on('message', message => {
           }
         }
         break;
-        4
 
         //fun commands
         //random command
@@ -99,35 +99,6 @@ client.on('message', message => {
         } else {
           message.channel.send('You must select either dog or cat as the first argument');
         }
-        break;
-
-        //countdown command --- not in order
-      case 'countdown':
-        var nowDiscord = message.createdTimestamp + 1420070400000;
-        var nowUnix = new Date(nowDiscord);
-        var nowHour = nowUnix.getHours();
-        var nowMinutes = nowUnix.getMinutes();
-        var nowSeconds = nowUnix.getSeconds();
-        var timeNow = nowHour + ':' + nowMinutes + ':' + nowSeconds;
-        message.channel.send(timeNow);
-        var laterMonth = args[0];
-        var laterDay = args[1];
-        var laterHour = args[2];
-        break;
-
-
-        // emoji commands
-      case 'cat':
-        message.channel.send('Meow!:cat:')
-        break;
-      case 'dog':
-        message.channel.send('Boof!:dog:')
-        break;
-      case 'bird':
-        message.channel.send('Tweet!:bird:')
-        break;
-      case 'lizard':
-        message.channel.send('....:lizard:')
         break;
 
 
@@ -195,10 +166,6 @@ client.on('message', message => {
               });
             });
             break;
-
-
-          case 'team':
-            break;
         }
         break;
 
@@ -225,5 +192,6 @@ client.login(config.token);
 
 
 //error handling
-
-client.on('error', console.error);
+client.on("error", (e) => console.error(e));
+client.on("warn", (e) => console.warn(e));
+client.on("debug", (e) => console.info(e));
