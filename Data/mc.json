@@ -1,5 +1,5 @@
 {
-  "Minecraft":[
+  "Minecraft":{
     "Admin":[""],
     "Moderator":[""],
     "User":[""],
@@ -7,5 +7,5 @@
     "Request":{
       "ID":"Username"
     }
-  ]
+  }
 }
