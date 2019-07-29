@@ -1,0 +1,11 @@
+{
+  "Minecraft":{
+    "Admin":[""],
+    "Moderator":[""],
+    "User":[""],
+    "IP":"192.91.19.19",
+    "Request":{
+      "ID":"Username"
+    }
+  }
+}
