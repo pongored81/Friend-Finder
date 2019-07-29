@@ -15,12 +15,39 @@
   - [ ] Website integration
   - [ ] Auto help
   - [ ] Public Bot
+  - [ ] MOTD / Scheduled Ads
 
 ### Back End
   - [ ] Formatting rules
   - [ ] Reconnect for disconnects and errors
   - [ ] Advanced error catching
   - [ ] Backup server support
+  - [ ]
+
+
+### Riot API
+
+
+
+### Minecraft
+  - [ ] DiscordSRV integration
+  - [ ]
+  - [ ]
+  - [ ]
+
+
+#### Admin
+  - [ ] Add mods - wip
+
+#### Mod
+  - [ ] Add Users - wip
+  - [ ] Whitelist 
+
+#### Users
+  - [ ] Request access to Server - wip
+
+
+
 
 
 #### Contact info
