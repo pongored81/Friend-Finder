@@ -1,0 +1,2 @@
+node friendfinder.js
+pause

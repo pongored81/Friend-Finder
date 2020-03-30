@@ -1,5 +1,5 @@
 // Import Nodes
-const {Discord, RichEmbed} = require('discord.js');
+const Discord = require('discord.js');
 const fs = require("fs");
 
 
@@ -16,13 +16,14 @@ const client = new Discord.Client();
 // Initialize Map for commands
 client.commands = new Discord.Collection();
 
-// Filters Files for commans
+// Filters Files for commands
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 // loops through Commands folder for commands
 for (const file of commandFiles) {
-	const command = require(`./Commands/${file}`);
-	client.commands.set(command.name, command);
+  const command = require(`./Commands/${file}`);
+  client.commands.set(command.name, command);
+};
 
 // ---> Command Handler END <---
 
@@ -33,19 +34,20 @@ client.on('ready', () => {
 
 // ---> Message event START <---
 client.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
+  const args = message.content.slice(prefix.length).split(/ +/);
+  const command = args.shift().toLowerCase();
 
   if (!client.commands.has(command)) return;
 
   try {
-  	client.commands.get(command).execute(message, args);
+    client.commands.get(command).execute(message, args);
   } catch (error) {
-  	console.error(error);
-  	message.reply('there was an error trying to execute that command!');
+    console.error(error);
+    message.reply('there was an error trying to execute that command!');
   }
+});
 // ---> Message event END <---
 // ---> guildMemberAdd Event START <---
 client.on('guildMemberAdd', member => {
@@ -55,10 +57,8 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   // Send the message, mentioning the member
   channel.send(`Welcome to the server, @${member}.`);
-});
+})
 // ---> guildMemberAdd Event END <---
-
-
 
 // Log our bot in using token
 client.login(config.token);

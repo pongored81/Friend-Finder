@@ -1,11 +1,23 @@
 {
-  "name": "Friend Finder",
+  "name": "Friend-Finder",
   "version": "1.0.0",
-  "description": "My First Discord Bot",
+  "description": "![FriendFinder.png](FriendFinder.png)",
   "main": "friendfinder.js",
-  "author": "Conner Copeland",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pongored81/Friend-Finder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pongored81/Friend-Finder/issues"
+  },
+  "homepage": "https://github.com/pongored81/Friend-Finder#readme",
   "dependencies": {
-    "discord.js": "^11.4.2",
-    "got": "^9.6.0"
+    "discord.js": "^11.5.1"
   }
 }
