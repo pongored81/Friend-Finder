@@ -21,9 +21,9 @@ module.exports = {
         // --> quickstart <-- START
         // sends quickstart guide to message author
       case "qs":
-      case "quickstart"
-      message.author.send("https://docs.google.com/document/d/1_BPdzoLV1e6YBvVVa_BBpm2Yx08Z-3bPLxm7XEah9j0/edit?usp=sharing");
-      break;
+      case "quickstart":
+        message.author.send("https://docs.google.com/document/d/1_BPdzoLV1e6YBvVVa_BBpm2Yx08Z-3bPLxm7XEah9j0/edit?usp=sharing");
+        break;
     }
   }
 };
